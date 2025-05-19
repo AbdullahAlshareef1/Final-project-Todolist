@@ -10,10 +10,16 @@ public class DBManager {
     private static final String PASSWORD = "changeme";
     private static Connection connection;
 
-    public static Connection connect() throws SQLException {
-        if (connection == null || connection.isClosed()) {
-            connection = DriverManager.getConnection(URL, USER, PASSWORD);
-            System.out.println("Database connected.");
+    public static Connection connect() {
+        try {
+            if (connection == null || connection.isClosed()) {
+                connection = DriverManager.getConnection(URL, USER, PASSWORD);
+                System.out.println("Database connected.");
+            }
+        } catch (SQLException e) {
+            System.err.println("Database connection failed: " + e.getMessage());
+            e.printStackTrace(); // Optional: Useful for debugging
+            connection = null;
         }
         return connection;
     }
