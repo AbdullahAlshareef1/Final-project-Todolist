@@ -7,7 +7,7 @@ public class TodoItem {
     private int id;
     private String description;
     private boolean done;
-    private LocalDateTime createdAt;
+    private final LocalDateTime createdAt;
     private LocalDate dueDate;
     private String priority;
 
