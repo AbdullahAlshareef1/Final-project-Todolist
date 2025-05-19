@@ -23,7 +23,7 @@ public class TaskService {
         }
     }
 
-    public synchronized List<TodoItem> findAll() throws SQLException {
+    public List<TodoItem> findAll() throws SQLException {
         List<TodoItem> list = new ArrayList<>();
         String sql = "SELECT * FROM tasks ORDER BY due_date ASC";
         try (Statement stmt = conn.createStatement();
